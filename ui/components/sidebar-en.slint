@@ -1,0 +1,179 @@
+import {
+    VerticalBox,
+    HorizontalBox,
+    ComboBox,
+    StandardListView,
+} from "std-widgets.slint";
+
+
+export component LeftSidBar inherits Rectangle {
+    width: 240px;
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    border-width: 1px;
+
+    VerticalBox {
+        spacing: 0px;
+        padding: 16px;
+
+        // App Header
+        Rectangle {
+            background: transparent;
+
+            HorizontalBox {
+                spacing: 10px;
+
+                Rectangle {
+                    width: 32px;
+                    height: 32px;
+                    background: #2563EB;
+                    border-radius: 8px;
+
+                    Text {
+                        text: "OM";
+                        color: #FFFFFF;
+                        font-size: 14px;
+                        font-weight: 700;
+                        horizontal-alignment: center;
+                    }
+                }
+
+                VerticalBox {
+                    spacing: 2px;
+                    Text {
+                        text: "OpenMember";
+                        color: #1E293B;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+
+                    Text {
+                        text: "Membership Management";
+                        color: #64748B;
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+
+        // Navigation Links
+        Rectangle {
+
+            background: #EFF6FF;
+            border-radius: 8px;
+            height: 55px;
+            HorizontalBox {
+                spacing: 20px;
+
+                Image {
+                    source: @image-url("../../assets/icons/grid.png");
+                    vertical-alignment: center;
+                    image-fit: contain;
+                    width: 25px;
+                }
+
+                Text {
+                    text: "Dashboard";
+                    color: #2563EB;
+                    font-size: 14px;
+                    font-weight: 500;
+                    vertical-alignment: center;
+                }
+            }
+        }
+
+        Rectangle {
+
+            height: 55px;
+
+            HorizontalBox {
+                spacing: 20px;
+
+                Image {
+                    source: @image-url("../../assets/icons/member.png");
+                    vertical-alignment: center;
+                    image-fit: contain;
+                    width: 25px;
+                }
+
+                Text {
+                    text: "Members";
+                    color: #64748B;
+                    font-size: 14px;
+                    vertical-alignment: center;
+                }
+            }
+        }
+
+        Rectangle {
+
+            border-radius: 8px;
+            height: 55px;
+
+            HorizontalBox {
+                spacing: 10px;
+
+                Text {
+                    text: "📋";
+                    font-size: 16px;
+                    color: black;
+                    vertical-alignment: center;
+                }
+
+                Text {
+                    text: "Plans";
+                    color: #64748B;
+                    font-size: 14px;
+                    vertical-alignment: center;
+                }
+            }
+        }
+
+        Rectangle {
+
+            border-radius: 8px;
+            height: 55px;
+            HorizontalBox {
+                spacing: 10px;
+
+                Text {
+                    text: "❂";
+                    font-size: 16px;
+                    color: #64748B;
+                    vertical-alignment: center;
+                }
+
+                Text {
+                    text: "Settings";
+                    color: #64748B;
+                    font-size: 14px;
+                    vertical-alignment: center;
+                    horizontal-alignment: left;
+                }
+            }
+        }
+
+        // Footer
+        Rectangle {
+            background: transparent;
+            height: 50px;
+
+            HorizontalBox {
+                spacing: 8px;
+
+                Text {
+                    text: "🦀";
+                    font-size: 16px;
+                    vertical-alignment: center;
+                }
+
+                Text {
+                    text: "v0.1.0";
+                    color: #64748B;
+                    font-size: 12px;
+                    vertical-alignment: center;
+                }
+            }
+        }
+    }
+}

@@ -1,28 +1,1234 @@
-// ui/appwindow.slint
-import { Button, VerticalBox } from "std-widgets.slint";
+import {
+    VerticalBox,
+    HorizontalBox,
+    ComboBox,
+    StandardListView,
+} from "std-widgets.slint";
+import { LeftSidBar } from "./components/sidebar-en.slint";
 
 export component MainWindow inherits Window {
-    title: "open roster";
-    width: 340px;
-    height: 350px;
+    title: "OpenMember - Membership Management";
+    width: 1280px;
+    height: 800px;
+    background: #F8FAFC;
 
-    in-out property <int> counter: 42;
-    callback request-increase-value();
+    HorizontalBox {
+        spacing: 0px;
 
-    VerticalBox {
-        alignment: center;
-        spacing: 12px;
+        // ── Left Sidebar (~240px) ──
+        LeftSidBar { }
 
-        Text {
-            text: "Counter: \{root.counter}";
-            font-size: 20px;
-            horizontal-alignment: center;
-        }
+        // ── Main Content ──
+        VerticalBox {
+            spacing: 0px;
+            padding: 24px;
 
-        Button {
-            text: "Increase Value";
-            clicked => {
-                root.request-increase-value();
+            // Top Toolbar
+            Rectangle {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 16px;
+                padding-right: 16px;
+                background: #FFFFFF;
+                border-color: #E2E8F0;
+                border-width: 1px;
+                border-radius: 10px;
+
+                HorizontalBox {
+                    spacing: 12px;
+
+                    // Search Input
+                    Rectangle {
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                        padding-left: 12px;
+                        padding-right: 12px;
+                        background: #F8FAFC;
+                        border-color: #E2E8F0;
+                        border-width: 1px;
+                        border-radius: 8px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Text {
+                                text: "🔍";
+                                font-size: 14px;
+                                color: #64748B;
+                            }
+
+                            Text {
+                                text: "Search members...";
+                                color: #94A3B8;
+                                font-size: 13px;
+                            }
+
+                            Rectangle {
+                                padding-top: 2px;
+                                padding-bottom: 2px;
+                                padding-left: 6px;
+                                padding-right: 6px;
+                                background: #EFF6FF;
+                                border-radius: 4px;
+
+                                Text {
+                                    text: "Ctrl+K";
+                                    color: #2563EB;
+                                    font-size: 10px;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
+
+                    // Filter Dropdown
+                    ComboBox {
+                        width: 160px;
+                        current-index: 0;
+
+                        model: ["All Status", "Active", "Expired"];
+                    }
+
+                    Rectangle {
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                        padding-left: 12px;
+                        padding-right: 12px;
+                        background: #F8FAFC;
+                        border-color: #E2E8F0;
+                        border-width: 1px;
+                        border-radius: 8px;
+
+                        Text {
+                            text: "All Status";
+                            color: #64748B;
+                            font-size: 13px;
+                        }
+                    }
+
+                    // Spacer
+                    Rectangle { }
+
+                    // Add Member Button
+                    Rectangle {
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        background: #2563EB;
+                        border-radius: 8px;
+
+                        HorizontalBox {
+                            spacing: 6px;
+
+                            Text {
+                                text: "+";
+                                color: #FFFFFF;
+                                font-size: 14px;
+                                font-weight: 600;
+                            }
+
+                            Text {
+                                text: "Add Member";
+                                color: #FFFFFF;
+                                font-size: 13px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Stats Row
+            HorizontalBox {
+                spacing: 16px;
+
+                // Active Members Card
+                Rectangle {
+                    padding: 20px;
+                    background: #FFFFFF;
+                    border-color: #E2E8F0;
+                    border-width: 1px;
+                    border-radius: 10px;
+
+                    VerticalBox {
+                        spacing: 8px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 36px;
+                                height: 36px;
+                                background: #ECFDF5;
+                                border-radius: 8px;
+
+                                Text {
+                                    text: "✓";
+                                    color: #10B981;
+                                    font-size: 16px;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "128";
+                                color: #1E293B;
+                                font-size: 24px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        Text {
+                            text: "Active Members";
+                            color: #10B981;
+                            font-size: 13px;
+                            font-weight: 500;
+                        }
+
+                        Text {
+                            text: "Currently active memberships";
+                            color: #64748B;
+                            font-size: 11px;
+                        }
+                    }
+                }
+
+                // Expiring Soon Card
+                Rectangle {
+                    padding: 20px;
+                    background: #FFFFFF;
+                    border-color: #E2E8F0;
+                    border-width: 1px;
+                    border-radius: 10px;
+
+                    VerticalBox {
+                        spacing: 8px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 36px;
+                                height: 36px;
+                                background: #FFFBEB;
+                                border-radius: 8px;
+
+                                Text {
+                                    text: "⚠";
+                                    color: #F59E0B;
+                                    font-size: 16px;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "5";
+                                color: #1E293B;
+                                font-size: 24px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        Text {
+                            text: "Expiring Soon";
+                            color: #F59E0B;
+                            font-size: 13px;
+                            font-weight: 500;
+                        }
+
+                        Text {
+                            text: "Expiring within 30 days";
+                            color: #64748B;
+                            font-size: 11px;
+                        }
+                    }
+                }
+
+                // Expired Card
+                Rectangle {
+                    padding: 20px;
+                    background: #FFFFFF;
+                    border-color: #E2E8F0;
+                    border-width: 1px;
+                    border-radius: 10px;
+
+                    VerticalBox {
+                        spacing: 8px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 36px;
+                                height: 36px;
+                                background: #FEF2F2;
+                                border-radius: 8px;
+
+                                Text {
+                                    text: "✕";
+                                    color: #EF4444;
+                                    font-size: 16px;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "8";
+                                color: #1E293B;
+                                font-size: 24px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        Text {
+                            text: "Expired";
+                            color: #EF4444;
+                            font-size: 13px;
+                            font-weight: 500;
+                        }
+
+                        Text {
+                            text: "Expired memberships";
+                            color: #64748B;
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+
+            // Data Table
+            Rectangle {
+                background: #FFFFFF;
+                border-color: #E2E8F0;
+                border-width: 1px;
+                border-radius: 10px;
+                padding: 0px;
+
+                VerticalBox {
+                    spacing: 0px;
+
+                    // Table Header
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        background: #F8FAFC;
+                        border-color: #E2E8F0;
+                        border-width: 1px;
+                        border-radius: 10px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Text {
+                                text: "Name";
+                                color: #64748B;
+                                font-size: 12px;
+                                font-weight: 600;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "Phone";
+                                color: #64748B;
+                                font-size: 12px;
+                                font-weight: 600;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Plan Type";
+                                color: #64748B;
+                                font-size: 12px;
+                                font-weight: 600;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "Expiration Date";
+                                color: #64748B;
+                                font-size: 12px;
+                                font-weight: 600;
+                                width: 160px;
+
+                                Text {
+                                    text: " ↕";
+                                    color: #2563EB;
+                                    font-size: 12px;
+                                }
+                            }
+
+                            Text {
+                                text: "Status";
+                                color: #64748B;
+                                font-size: 12px;
+                                font-weight: 600;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "Actions";
+                                color: #64748B;
+                                font-size: 12px;
+                                font-weight: 600;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 1: Ali Rezaei - Active
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #DBEAFE;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "AR";
+                                    color: #2563EB;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Ali Rezaei";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0912 123 4567";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Premium Monthly";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2025-03-15";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #ECFDF5;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #10B981;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Active";
+                                        color: #10B981;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 2: Sareh Mohammadi - Active
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        background: #FFFFFF;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #DBEAFE;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "SM";
+                                    color: #2563EB;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Sareh Mohammadi";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0913 987 6543";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Premium Quarterly";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2025-06-20";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #ECFDF5;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #10B981;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Active";
+                                        color: #10B981;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 3: Mehdi Karimi - Expiring Soon
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #FEF3C7;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "MK";
+                                    color: #F59E0B;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Mehdi Karimi";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0914 456 7890";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Basic Monthly";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2025-01-10";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #FFFBEB;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #F59E0B;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Expiring Soon";
+                                        color: #F59E0B;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 4: Neda Ahmadi - Expired
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        background: #FFFFFF;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #FEE2E2;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "NA";
+                                    color: #EF4444;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Neda Ahmadi";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0915 234 5678";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Premium Annual";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2024-09-01";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #FEF2F2;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #EF4444;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Expired";
+                                        color: #EF4444;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 5: Reza Talebi - Active
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #DBEAFE;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "RT";
+                                    color: #2563EB;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Reza Talebi";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0916 345 6789";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Premium Quarterly";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2025-09-30";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #ECFDF5;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #10B981;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Active";
+                                        color: #10B981;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 6: Zahra Hosseini - Active
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        background: #FFFFFF;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #DBEAFE;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "ZH";
+                                    color: #2563EB;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Zahra Hosseini";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0917 567 8901";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Basic Quarterly";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2025-05-25";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #ECFDF5;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #10B981;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Active";
+                                        color: #10B981;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 7: Amir Hosseini - Expired
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        border-color: #F1F5F9;
+                        border-width: 1px;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #FEE2E2;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "AH";
+                                    color: #EF4444;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Amir Hosseini";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0918 678 9012";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Premium Annual";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2024-06-15";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #FEF2F2;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #EF4444;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Expired";
+                                        color: #EF4444;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+
+                    // Row 8: Fatemeh Davoodi - Expiring Soon
+                    Rectangle {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                        background: #FFFFFF;
+
+                        HorizontalBox {
+                            spacing: 8px;
+
+                            Rectangle {
+                                width: 32px;
+                                height: 32px;
+                                background: #FEF3C7;
+                                border-radius: 16px;
+
+                                Text {
+                                    text: "FD";
+                                    color: #F59E0B;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    horizontal-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: "Fatemeh Davoodi";
+                                color: #1E293B;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 200px;
+                            }
+
+                            Text {
+                                text: "0919 789 0123";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Text {
+                                text: "Basic Monthly";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 140px;
+                            }
+
+                            Text {
+                                text: "2025-02-28";
+                                color: #1E293B;
+                                font-size: 13px;
+                                width: 160px;
+                            }
+
+                            Rectangle {
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                background: #FFFBEB;
+                                border-radius: 12px;
+
+                                HorizontalBox {
+                                    spacing: 4px;
+
+                                    Rectangle {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #F59E0B;
+                                        border-radius: 3px;
+                                    }
+
+                                    Text {
+                                        text: "Expiring Soon";
+                                        color: #F59E0B;
+                                        font-size: 12px;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "Renew";
+                                color: #2563EB;
+                                font-size: 13px;
+                                font-weight: 500;
+                                width: 80px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Pagination Footer
+            Rectangle {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 16px;
+                padding-right: 16px;
+                background: #FFFFFF;
+                border-color: #E2E8F0;
+                border-width: 1px;
+                border-radius: 10px;
+
+                HorizontalBox {
+                    spacing: 8px;
+
+                    Text {
+                        text: "Showing";
+                        color: #64748B;
+                        font-size: 13px;
+                    }
+
+                    Text {
+                        text: "1 to 8";
+                        color: #1E293B;
+                        font-size: 13px;
+                        font-weight: 600;
+                    }
+
+                    Text {
+                        text: "of 8 members";
+                        color: #64748B;
+                        font-size: 13px;
+                    }
+
+                    Rectangle { } // spacer
+
+                    // Pagination buttons
+                    Rectangle {
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        padding-left: 12px;
+                        padding-right: 12px;
+                        background: #F8FAFC;
+                        border-color: #E2E8F0;
+                        border-width: 1px;
+                        border-radius: 6px;
+
+                        Text {
+                            text: "←";
+                            color: #64748B;
+                            font-size: 12px;
+                        }
+                    }
+
+                    Rectangle {
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        background: #2563EB;
+                        border-radius: 6px;
+
+                        Text {
+                            text: "1";
+                            color: #FFFFFF;
+                            font-size: 12px;
+                            font-weight: 600;
+                        }
+                    }
+
+                    Rectangle {
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        background: #F8FAFC;
+                        border-color: #E2E8F0;
+                        border-width: 1px;
+                        border-radius: 6px;
+
+                        Text {
+                            text: "2";
+                            color: #64748B;
+                            font-size: 12px;
+                        }
+                    }
+
+                    Rectangle {
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        padding-left: 12px;
+                        padding-right: 12px;
+                        background: #F8FAFC;
+                        border-color: #E2E8F0;
+                        border-width: 1px;
+                        border-radius: 6px;
+
+                        Text {
+                            text: "→";
+                            color: #64748B;
+                            font-size: 12px;
+                        }
+                    }
+                }
             }
         }
     }
