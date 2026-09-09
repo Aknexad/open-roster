@@ -1,0 +1,178 @@
+import {
+    VerticalBox,
+    HorizontalBox,
+    ComboBox,
+    StandardListView,
+    Button,
+} from "std-widgets.slint";
+
+component SearchBar inherits Rectangle {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    border-width: 1px;
+    border-radius: 8px;
+
+    HorizontalBox {
+        spacing: 15px;
+        padding: 15px;
+
+        Image {
+            source: @image-url("../../assets/icons/search.svg");
+            vertical-alignment: center;
+            image-fit: contain;
+            width: 25px;
+        }
+
+        Text {
+            text: "Search members...";
+            color: #94A3B8;
+            font-size: 13px;
+            vertical-alignment: center;
+        }
+
+        Rectangle {
+            background: #EFF6FF;
+            border-radius: 4px;
+            width: 20px;
+
+            Text {
+                text: "Ctrl+K";
+                color: #2563EB;
+                font-size: 10px;
+                font-weight: 500;
+                vertical-alignment: center;
+            }
+        }
+    }
+}
+
+component AddMember inherits Rectangle {
+    background: #2563EB;
+    border-radius: 8px;
+
+    HorizontalBox {
+        spacing: 6px;
+
+        Text {
+            text: "+";
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 600;
+            vertical-alignment: center;
+        }
+
+        Text {
+            text: "Add Member";
+            color: #FFFFFF;
+            font-size: 13px;
+            font-weight: 500;
+            vertical-alignment: center;
+        }
+    }
+}
+
+export component TopToolbar inherits HorizontalBox {
+    height: 75px;
+    padding: 15px;
+
+    SearchBar { }
+
+    AddMember {
+        width: 120px;
+    }
+
+    // Rectangle {
+    //     background: #FFFFFF;
+    //     border-color: #E2E8F0;
+    //     border-width: 1px;
+    //     border-radius: 10px;
+
+    //     HorizontalBox {
+    //         spacing: 12px;
+
+    //         // Search Input
+    //         Rectangle {
+    //             background: #F8FAFC;
+    //             border-color: #E2E8F0;
+    //             border-width: 1px;
+    //             border-radius: 8px;
+    //             HorizontalBox {
+    //                 spacing: 15px;
+    //                 Image {
+    //                     source: @image-url("../../assets/icons/search.svg");
+    //                     vertical-alignment: center;
+    //                     image-fit: contain;
+    //                     width: 25px;
+    //                 }
+
+    //                 Text {
+    //                     text: "Search members...";
+    //                     color: #94A3B8;
+    //                     font-size: 13px;
+    //                     vertical-alignment: center;
+    //                 }
+
+    //                 Rectangle {
+    //                     background: #EFF6FF;
+    //                     border-radius: 4px;
+
+    //                     Text {
+    //                         text: "Ctrl+K";
+    //                         color: #2563EB;
+    //                         font-size: 10px;
+    //                         font-weight: 500;
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         // Filter Dropdown
+    //         ComboBox {
+    //             width: 160px;
+    //             current-index: 0;
+
+    //             model: ["All Status", "Active", "Expired"];
+    //         }
+
+    //         Rectangle {
+    //             background: #F8FAFC;
+    //             border-color: #E2E8F0;
+    //             border-width: 1px;
+    //             border-radius: 8px;
+
+    //             Text {
+    //                 text: "All Status";
+    //                 color: #64748B;
+    //                 font-size: 13px;
+    //             }
+    //         }
+
+    //         // Spacer
+    //         // Rectangle { }
+
+    //         // Add Member Button
+    //         Rectangle {
+    //             background: #2563EB;
+    //             border-radius: 8px;
+
+    //             HorizontalBox {
+    //                 spacing: 6px;
+
+    //                 Text {
+    //                     text: "+";
+    //                     color: #FFFFFF;
+    //                     font-size: 14px;
+    //                     font-weight: 600;
+    //                 }
+
+    //                 Text {
+    //                     text: "Add Member";
+    //                     color: #FFFFFF;
+    //                     font-size: 13px;
+    //                     font-weight: 500;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}

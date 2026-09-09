@@ -13,8 +13,8 @@ export component LeftSidBar inherits Rectangle {
     border-width: 1px;
 
     VerticalBox {
-        spacing: 0px;
-        padding: 16px;
+        spacing: 20px;
+        padding: 10px;
 
         // App Header
         Rectangle {
@@ -66,7 +66,7 @@ export component LeftSidBar inherits Rectangle {
                 spacing: 20px;
 
                 Image {
-                    source: @image-url("../../assets/icons/grid.png");
+                    source: @image-url("../../assets/icons/kanban.svg");
                     vertical-alignment: center;
                     image-fit: contain;
                     width: 25px;
@@ -83,14 +83,12 @@ export component LeftSidBar inherits Rectangle {
         }
 
         Rectangle {
-
             height: 55px;
-
             HorizontalBox {
                 spacing: 20px;
 
                 Image {
-                    source: @image-url("../../assets/icons/member.png");
+                    source: @image-url("../../assets/icons/user-group.svg");
                     vertical-alignment: center;
                     image-fit: contain;
                     width: 25px;
@@ -111,13 +109,13 @@ export component LeftSidBar inherits Rectangle {
             height: 55px;
 
             HorizontalBox {
-                spacing: 10px;
+                spacing: 20px;
 
-                Text {
-                    text: "📋";
-                    font-size: 16px;
-                    color: black;
+                Image {
+                    source: @image-url("../../assets/icons/credit-card.svg");
                     vertical-alignment: center;
+                    image-fit: contain;
+                    width: 25px;
                 }
 
                 Text {
@@ -134,13 +132,13 @@ export component LeftSidBar inherits Rectangle {
             border-radius: 8px;
             height: 55px;
             HorizontalBox {
-                spacing: 10px;
+                spacing: 20px;
 
-                Text {
-                    text: "❂";
-                    font-size: 16px;
-                    color: #64748B;
+                Image {
+                    source: @image-url("../../assets/icons/cog.svg");
                     vertical-alignment: center;
+                    image-fit: contain;
+                    width: 25px;
                 }
 
                 Text {
@@ -153,24 +151,31 @@ export component LeftSidBar inherits Rectangle {
             }
         }
 
+        // This consumes all remaining vertical space
+        Rectangle {
+            vertical-stretch: 1;
+        }
         // Footer
         Rectangle {
             background: transparent;
             height: 50px;
+            border-color: #E2E8F0;
+            border-width: 1px;
 
             HorizontalBox {
-                spacing: 8px;
+                spacing: 20px;
 
-                Text {
-                    text: "🦀";
-                    font-size: 16px;
+                Image {
+                    source: @image-url("../../assets/icons/circle-check-big.svg");
                     vertical-alignment: center;
+                    image-fit: contain;
+                    width: 25px;
                 }
 
                 Text {
-                    text: "v0.1.0";
+                    text: "v0.0.1";
                     color: #64748B;
-                    font-size: 12px;
+                    font-size: 15px;
                     vertical-alignment: center;
                 }
             }
