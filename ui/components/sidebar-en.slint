@@ -1,5 +1,6 @@
 import { VerticalBox, HorizontalBox } from "std-widgets.slint";
 import { Theme } from "../styles/theme.slint";
+import { ThemeToggle } from "./theme_toggle.slint";
 
 export component LeftSidBar inherits Rectangle {
     width: 240px;
@@ -178,6 +179,10 @@ export component LeftSidBar inherits Rectangle {
                     font-size: Theme.fontLg;
                     vertical-alignment: center;
                 }
+
+                Rectangle { } // spacer
+
+                ThemeToggle { }
             }
         }
     }

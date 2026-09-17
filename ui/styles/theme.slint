@@ -1,10 +1,13 @@
 export global Theme {
+    // Theme mode — dark-mode is the default
+    in-out property <bool> dark-mode: true;
+
     // Brand
     in-out property <color> primary: #2563EB;
     in-out property <color> primaryHover: #1D4ED8;
     in-out property <color> primaryLight: #DBEAFE;
 
-    // Neutral
+    // Neutral – light palette
     in-out property <color> neutral50: #F8FAFC;
     in-out property <color> neutral100: #F1F5F9;
     in-out property <color> neutral200: #E2E8F0;
@@ -16,19 +19,55 @@ export global Theme {
     in-out property <color> neutral800: #1E293B;
     in-out property <color> neutral900: #0F172A;
 
+    // Neutral – dark palette
+    in-out property <color> n50-d: #020617;
+    in-out property <color> n100-d: #0F172A;
+    in-out property <color> n200-d: #1E293B;
+    in-out property <color> n300-d: #334155;
+    in-out property <color> n400-d: #475569;
+    in-out property <color> n500-d: #64748B;
+    in-out property <color> n600-d: #94A3B8;
+    in-out property <color> n700-d: #CBD5E1;
+    in-out property <color> n800-d: #E2E8F0;
+    in-out property <color> n900-d: #F1F5F9;
+
     // Semantic
     in-out property <color> success: #10B981;
     in-out property <color> successLight: #ECFDF5;
+    in-out property <color> successLight-d: #064E3B;
     in-out property <color> warning: #F59E0B;
     in-out property <color> warningLight: #FFFBEB;
+    in-out property <color> warningLight-d: #78350F;
     in-out property <color> error: #EF4444;
     in-out property <color> errorLight: #FEF2F2;
+    in-out property <color> errorLight-d: #7F1D1D;
     in-out property <color> info: #3B82F6;
     in-out property <color> infoLight: #EFF6FF;
+    in-out property <color> infoLight-d: #1E3A5F;
 
-    // Surfaces
-    in-out property <color> surfaceBg: #FFFFFF;
-    in-out property <color> pageBg: #F8FAFC;
+    // Computed surfaces – react to dark-mode automatically
+    in-out property <color> surfaceBg: dark-mode ? n100-d : neutral50;
+    in-out property <color> pageBg: dark-mode ? n50-d : neutral50;
+    in-out property <color> cardBg: dark-mode ? n200-d : neutral50;
+    in-out property <color> inputBg: dark-mode ? n100-d : neutral50;
+    in-out property <color> hoverBg: dark-mode ? n200-d : neutral100;
+    in-out property <color> activeBg: dark-mode ? n300-d : primaryLight;
+
+    // Computed text colors
+    in-out property <color> textPrimary: dark-mode ? n800-d : neutral900;
+    in-out property <color> textSecondary: dark-mode ? n400-d : neutral600;
+    in-out property <color> textMuted: dark-mode ? n500-d : neutral400;
+    in-out property <color> textInverse: dark-mode ? n900-d : neutral50;
+
+    // Computed borders
+    in-out property <color> borderColor: dark-mode ? n200-d : neutral200;
+    in-out property <color> borderColorLight: dark-mode ? n300-d : neutral300;
+
+    // Computed semantic lights
+    in-out property <color> successLightComputed: dark-mode ? successLight-d : successLight;
+    in-out property <color> warningLightComputed: dark-mode ? warningLight-d : warningLight;
+    in-out property <color> errorLightComputed: dark-mode ? errorLight-d : errorLight;
+    in-out property <color> infoLightComputed: dark-mode ? infoLight-d : infoLight;
 
     // Radii
     in-out property <length> radiusSm: 6px;
@@ -53,7 +92,4 @@ export global Theme {
     in-out property <int> weightMedium: 500;
     in-out property <int> weightSemibold: 600;
     in-out property <int> weightBold: 700;
-
-    // Borders
-    in-out property <color> borderColor: #E2E8F0;
 }
