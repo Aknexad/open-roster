@@ -1,0 +1,36 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Card } from "../components/card.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component DashboardView inherits VerticalBox {
+    spacing: Theme.spacingXl;
+    padding: Theme.spacingXl;
+
+    HorizontalBox {
+        spacing: Theme.spacingLg;
+
+        Card {
+            title: "Active Members";
+            value: "128";
+            subtitle: "Currently active memberships";
+            icon-text: "✓";
+            icon-bg: Theme.successLight;
+        }
+
+        Card {
+            title: "Expiring Soon";
+            value: "5";
+            subtitle: "Expiring within 30 days";
+            icon-text: "⚠";
+            icon-bg: Theme.warningLight;
+        }
+
+        Card {
+            title: "Expired";
+            value: "8";
+            subtitle: "Expired memberships";
+            icon-text: "✕";
+            icon-bg: Theme.errorLight;
+        }
+    }
+}

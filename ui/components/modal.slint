@@ -1,0 +1,83 @@
+import {
+    VerticalBox,
+    HorizontalBox,
+    StandardListView,
+} from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component Modal inherits Rectangle {
+    in-out property <string> title: "Dialog";
+    height: 320px;
+
+    background: Theme.surfaceBg;
+    border-color: Theme.borderColor;
+    border-width: 1px;
+    border-radius: Theme.radiusLg;
+    padding: Theme.spacingLg;
+
+    VerticalBox {
+        spacing: Theme.spacingMd;
+
+        HorizontalBox {
+            spacing: Theme.spacingSm;
+
+            Text {
+                text: root.title;
+                color: Theme.neutral800;
+                font-size: Theme.fontXl;
+                font-weight: Theme.weightBold;
+            }
+
+            Rectangle { } // spacer
+        }
+
+        Rectangle {
+            width: 100%;
+            height: 1px;
+            background: Theme.borderColor;
+        }
+
+        Rectangle {
+            width: 100%;
+            height: 100%;
+            // Content slot
+        }
+
+        HorizontalBox {
+            spacing: Theme.spacingSm;
+
+            Rectangle {
+                height: 36px;
+                background: Theme.neutral50;
+                border-color: Theme.borderColor;
+                border-width: 1px;
+                border-radius: Theme.radiusMd;
+                padding-left: 16px;
+                padding-right: 16px;
+
+                Text {
+                    text: "Cancel";
+                    color: Theme.neutral600;
+                    font-size: Theme.fontSm;
+                    vertical-alignment: center;
+                }
+            }
+
+            Rectangle {
+                height: 36px;
+                background: Theme.primary;
+                border-radius: Theme.radiusMd;
+                padding-left: 16px;
+                padding-right: 16px;
+
+                Text {
+                    text: "Confirm";
+                    color: #FFFFFF;
+                    font-size: Theme.fontSm;
+                    font-weight: Theme.weightMedium;
+                    vertical-alignment: center;
+                }
+            }
+        }
+    }
+}

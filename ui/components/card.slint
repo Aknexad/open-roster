@@ -1,0 +1,60 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component Card inherits Rectangle {
+    in-out property <string> title: "";
+    in-out property <string> value: "";
+    in-out property <string> subtitle: "";
+    in-out property <string> icon-text: "";
+    in-out property <color> icon-bg: Theme.primaryLight;
+
+    width: 100%;
+    height: 80px;
+    background: Theme.surfaceBg;
+    border-color: Theme.borderColor;
+    border-width: 1px;
+    border-radius: Theme.radiusLg;
+    padding: Theme.spacingMd;
+
+    VerticalBox {
+        spacing: Theme.spacingSm;
+
+        HorizontalBox {
+            spacing: Theme.spacingSm;
+
+            Rectangle {
+                width: 36px;
+                height: 36px;
+                background: root.icon-bg;
+                border-radius: Theme.radiusMd;
+
+                Text {
+                    text: root.icon-text;
+                    color: Theme.primary;
+                    font-size: 16px;
+                    horizontal-alignment: center;
+                }
+            }
+
+            Text {
+                text: root.value;
+                color: Theme.neutral800;
+                font-size: 24px;
+                font-weight: Theme.weightBold;
+            }
+        }
+
+        Text {
+            text: root.title;
+            color: Theme.primary;
+            font-size: Theme.fontSm;
+            font-weight: Theme.weightMedium;
+        }
+
+        Text {
+            text: root.subtitle;
+            color: Theme.neutral500;
+            font-size: Theme.fontXs;
+        }
+    }
+}

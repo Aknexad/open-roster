@@ -1,0 +1,100 @@
+import { VerticalBox, HorizontalBox, ComboBox } from "std-widgets.slint";
+import { DataTableRow, DataTableColumn } from "../components/data_table.slint";
+import { Pagination } from "../components/pagination.slint";
+import { Button } from "../components/button.slint";
+import { Input } from "../components/input.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component MembersView inherits VerticalBox {
+    spacing: Theme.spacingLg;
+    padding: Theme.spacingXl;
+
+    HorizontalBox {
+        spacing: Theme.spacingMd;
+        height: 40px;
+
+        Input {
+            placeholder: "Search members...";
+            preferred-width: 280px;
+        }
+
+        ComboBox {
+            preferred-width: 160px;
+            current-index: 0;
+            model: ["All Status", "Active", "Expiring Soon", "Expired"];
+        }
+
+        Rectangle { } // spacer
+
+        Button {
+            text: "Export";
+            bg-color: Theme.neutral50;
+            preferred-width: 80px;
+            height: 36px;
+        }
+    }
+
+    Rectangle {
+        width: 100%;
+        background: Theme.surfaceBg;
+        border-color: Theme.borderColor;
+        border-width: 1px;
+        border-radius: Theme.radiusLg;
+
+        VerticalBox {
+            spacing: 0px;
+
+            DataTableColumn {
+                label: "Name";
+                preferred-width: 200px;
+                background: Theme.neutral50;
+            }
+
+            DataTableRow {
+                name: "Ali Rezaei";
+                initials: "AR";
+                phone: "0912 123 4567";
+                plan: "Premium Monthly";
+                expiry: "2025-03-15";
+                status: "Active";
+                status-color: Theme.success;
+                action-text: "Renew";
+                action-color: Theme.primary;
+                border-color: Theme.neutral100;
+                background: Theme.surfaceBg;
+            }
+
+            DataTableRow {
+                name: "Sareh Mohammadi";
+                initials: "SM";
+                phone: "0913 987 6543";
+                plan: "Premium Quarterly";
+                expiry: "2025-06-20";
+                status: "Active";
+                status-color: Theme.success;
+                border-color: Theme.neutral100;
+                background: Theme.neutral50;
+            }
+
+            DataTableRow {
+                name: "Mehdi Karimi";
+                initials: "MK";
+                phone: "0914 456 7890";
+                plan: "Basic Monthly";
+                expiry: "2025-01-10";
+                status: "Expiring Soon";
+                status-color: Theme.warning;
+                border-color: Theme.neutral100;
+                background: Theme.surfaceBg;
+            }
+        }
+    }
+
+    Pagination {
+        showing-text: "Showing";
+        range-text: "1 to 8";
+        total-text: "of 8 members";
+        current-page: 1;
+        total-pages: 2;
+    }
+}

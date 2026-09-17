@@ -1,0 +1,24 @@
+import { HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component Input inherits Rectangle {
+    in-out property <string> placeholder: "Enter text...";
+    height: 38px;
+    background: Theme.pageBg;
+    border-color: Theme.borderColor;
+    border-width: 1px;
+    border-radius: Theme.radiusMd;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    HorizontalBox {
+        spacing: Theme.spacingSm;
+
+        Text {
+            text: root.placeholder;
+            color: Theme.neutral400;
+            font-size: Theme.fontMd;
+            vertical-alignment: center;
+        }
+    }
+}

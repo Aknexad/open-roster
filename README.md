@@ -3,6 +3,7 @@
 
 # Standard Production-Ready
 
+```
 openmember/
 ├── Cargo.toml
 ├── build.rs                 # کامپایل کدهای .slint به Rust (slint-build)
@@ -63,3 +64,4 @@ openmember/
 │       ├── mod.rs
 │       ├── date.rs          # محاسبات تقویم و تبدیل تاریخ‌ها
 │       └── errors.rs        # سیستم مدیریت خطاهای سراسری (thiserror/anyhow)
+```

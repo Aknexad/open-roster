@@ -1,0 +1,24 @@
+import { HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component Toast inherits Rectangle {
+    property <string> message: "";
+    height: 44px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: Theme.neutral800;
+    border-radius: Theme.radiusMd;
+
+    HorizontalBox {
+        spacing: Theme.spacingSm;
+
+        Text {
+            text: root.message;
+            color: #FFFFFF;
+            font-size: Theme.fontSm;
+            vertical-alignment: center;
+        }
+    }
+}

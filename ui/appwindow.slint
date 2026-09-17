@@ -1,25 +1,22 @@
 import {
     VerticalBox,
     HorizontalBox,
-    ComboBox,
-    StandardListView,
 } from "std-widgets.slint";
 import { LeftSidBar } from "./components/sidebar-en.slint";
 import { MainWindow } from "./components/main_window.slint";
+import { Theme } from "./styles/theme.slint";
 
 export component MainWindow inherits Window {
     title: "OpenMember - Membership Management";
     width: 1280px;
     height: 800px;
-    background: #F8FAFC;
+    background: Theme.pageBg;
 
     HorizontalBox {
         spacing: 0px;
 
-        // ── Left Sidebar (~240px) ──
         LeftSidBar { }
 
-        // ── Main Content ──
         MainWindow { }
     }
 }

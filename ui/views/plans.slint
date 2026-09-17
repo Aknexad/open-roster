@@ -1,0 +1,47 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Card } from "../components/card.slint";
+import { Button } from "../components/button.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component PlansView inherits VerticalBox {
+    spacing: Theme.spacingLg;
+    padding: Theme.spacingXl;
+
+    HorizontalBox {
+        spacing: Theme.spacingMd;
+
+        Button {
+            text: "+ Add Plan";
+            bg-color: Theme.primary;
+            preferred-width: 120px;
+        }
+    }
+
+    HorizontalBox {
+        spacing: Theme.spacingLg;
+
+        Card {
+            title: "Basic Monthly";
+            value: "$15";
+            subtitle: "Monthly membership";
+            icon-text: "$";
+            icon-bg: Theme.infoLight;
+        }
+
+        Card {
+            title: "Premium Monthly";
+            value: "$35";
+            subtitle: "Monthly premium";
+            icon-text: "$";
+            icon-bg: Theme.warningLight;
+        }
+
+        Card {
+            title: "Premium Annual";
+            value: "$360";
+            subtitle: "Annual savings";
+            icon-text: "$";
+            icon-bg: Theme.successLight;
+        }
+    }
+}

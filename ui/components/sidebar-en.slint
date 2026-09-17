@@ -1,56 +1,53 @@
-import {
-    VerticalBox,
-    HorizontalBox,
-    ComboBox,
-    StandardListView,
-} from "std-widgets.slint";
-
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
 
 export component LeftSidBar inherits Rectangle {
     width: 240px;
-    background: #FFFFFF;
-    border-color: #E2E8F0;
+    background: Theme.surfaceBg;
+    border-color: Theme.borderColor;
     border-width: 1px;
 
     VerticalBox {
-        spacing: 20px;
-        padding: 10px;
+        spacing: Theme.spacingMd;
+        padding: Theme.spacingMd;
 
         // App Header
         Rectangle {
             background: transparent;
 
             HorizontalBox {
-                spacing: 10px;
+                spacing: Theme.spacingSm;
 
                 Rectangle {
                     width: 32px;
                     height: 32px;
-                    background: #2563EB;
-                    border-radius: 8px;
+                    background: Theme.primary;
+                    border-radius: Theme.radiusMd;
 
                     Text {
                         text: "OM";
                         color: #FFFFFF;
                         font-size: 14px;
-                        font-weight: 700;
+                        font-weight: Theme.weightBold;
                         horizontal-alignment: center;
+                        vertical-alignment: center;
                     }
                 }
 
                 VerticalBox {
                     spacing: 2px;
+
                     Text {
                         text: "OpenMember";
-                        color: #1E293B;
-                        font-size: 16px;
-                        font-weight: 600;
+                        color: Theme.neutral800;
+                        font-size: Theme.fontXl;
+                        font-weight: Theme.weightSemibold;
                     }
 
                     Text {
                         text: "Membership Management";
-                        color: #64748B;
-                        font-size: 11px;
+                        color: Theme.neutral500;
+                        font-size: Theme.fontXs;
                     }
                 }
             }
@@ -58,12 +55,14 @@ export component LeftSidBar inherits Rectangle {
 
         // Navigation Links
         Rectangle {
-
-            background: #EFF6FF;
-            border-radius: 8px;
+            background: Theme.primaryLight;
+            border-radius: Theme.radiusMd;
             height: 55px;
+
             HorizontalBox {
-                spacing: 20px;
+                spacing: Theme.spacingMd;
+                padding-left: 12px;
+                padding-right: 12px;
 
                 Image {
                     source: @image-url("../../assets/icons/kanban.svg");
@@ -74,9 +73,9 @@ export component LeftSidBar inherits Rectangle {
 
                 Text {
                     text: "Dashboard";
-                    color: #2563EB;
-                    font-size: 14px;
-                    font-weight: 500;
+                    color: Theme.primary;
+                    font-size: Theme.fontMd;
+                    font-weight: Theme.weightMedium;
                     vertical-alignment: center;
                 }
             }
@@ -84,8 +83,11 @@ export component LeftSidBar inherits Rectangle {
 
         Rectangle {
             height: 55px;
+            padding-left: 12px;
+            padding-right: 12px;
+
             HorizontalBox {
-                spacing: 20px;
+                spacing: Theme.spacingMd;
 
                 Image {
                     source: @image-url("../../assets/icons/user-group.svg");
@@ -96,20 +98,20 @@ export component LeftSidBar inherits Rectangle {
 
                 Text {
                     text: "Members";
-                    color: #64748B;
-                    font-size: 14px;
+                    color: Theme.neutral500;
+                    font-size: Theme.fontMd;
                     vertical-alignment: center;
                 }
             }
         }
 
         Rectangle {
-
-            border-radius: 8px;
             height: 55px;
+            padding-left: 12px;
+            padding-right: 12px;
 
             HorizontalBox {
-                spacing: 20px;
+                spacing: Theme.spacingMd;
 
                 Image {
                     source: @image-url("../../assets/icons/credit-card.svg");
@@ -120,19 +122,20 @@ export component LeftSidBar inherits Rectangle {
 
                 Text {
                     text: "Plans";
-                    color: #64748B;
-                    font-size: 14px;
+                    color: Theme.neutral500;
+                    font-size: Theme.fontMd;
                     vertical-alignment: center;
                 }
             }
         }
 
         Rectangle {
-
-            border-radius: 8px;
             height: 55px;
+            padding-left: 12px;
+            padding-right: 12px;
+
             HorizontalBox {
-                spacing: 20px;
+                spacing: Theme.spacingMd;
 
                 Image {
                     source: @image-url("../../assets/icons/cog.svg");
@@ -143,27 +146,24 @@ export component LeftSidBar inherits Rectangle {
 
                 Text {
                     text: "Settings";
-                    color: #64748B;
-                    font-size: 14px;
+                    color: Theme.neutral500;
+                    font-size: Theme.fontMd;
                     vertical-alignment: center;
-                    horizontal-alignment: left;
                 }
             }
         }
 
-        // This consumes all remaining vertical space
-        Rectangle {
-            vertical-stretch: 1;
-        }
         // Footer
         Rectangle {
             background: transparent;
             height: 50px;
-            border-color: #E2E8F0;
+            border-color: Theme.borderColor;
             border-width: 1px;
+            padding-left: 12px;
+            padding-right: 12px;
 
             HorizontalBox {
-                spacing: 20px;
+                spacing: Theme.spacingMd;
 
                 Image {
                     source: @image-url("../../assets/icons/circle-check-big.svg");
@@ -174,8 +174,8 @@ export component LeftSidBar inherits Rectangle {
 
                 Text {
                     text: "v0.0.1";
-                    color: #64748B;
-                    font-size: 15px;
+                    color: Theme.neutral500;
+                    font-size: Theme.fontLg;
                     vertical-alignment: center;
                 }
             }

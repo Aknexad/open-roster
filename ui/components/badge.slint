@@ -1,0 +1,38 @@
+import { HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component Badge inherits Rectangle {
+    in-out property <string> text: "";
+    in-out property <color> bg-color: Theme.infoLight;
+    in-out property <color> text-color: Theme.info;
+    in-out property <bool> has-dot: false;
+    in-out property <color> dot-color: Theme.info;
+
+    height: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background: root.bg-color;
+    border-radius: 12px;
+
+    HorizontalBox {
+        spacing: 4px;
+
+        Rectangle {
+            width: 6px;
+            height: 6px;
+            background: root.dot-color;
+            border-radius: 3px;
+            visible: root.has-dot;
+        }
+
+        Text {
+            text: root.text;
+            color: root.text-color;
+            font-size: Theme.fontXs;
+            font-weight: Theme.weightMedium;
+            vertical-alignment: center;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Button } from "../components/button.slint";
+import { Theme } from "../styles/theme.slint";
+
+export component SettingsView inherits VerticalBox {
+    spacing: Theme.spacingLg;
+    padding: Theme.spacingXl;
+
+    Text {
+        text: "Settings";
+        color: Theme.neutral800;
+        font-size: Theme.fontXl;
+        font-weight: Theme.weightBold;
+    }
+
+    HorizontalBox {
+        spacing: Theme.spacingMd;
+
+        Button {
+            text: "Backup Now";
+            bg-color: Theme.primary;
+            preferred-width: 120px;
+        }
+
+        Button {
+            text: "Google Drive";
+            bg-color: Theme.info;
+            preferred-width: 120px;
+        }
+    }
+}
