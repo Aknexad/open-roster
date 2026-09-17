@@ -4,10 +4,10 @@ import { Input } from "./input.slint";
 import { Button } from "./button.slint";
 
 export component TopToolbar inherits Rectangle {
-    height: 75px;
+    height: Theme.heightXl;
     padding: Theme.spacingMd;
-    background: Theme.surfaceBg;
-    border-color: Theme.borderColor;
+    background: Theme.surface-color;
+    border-color: Theme.border-color;
     border-width: 1px;
 
     HorizontalBox {
@@ -20,7 +20,7 @@ export component TopToolbar inherits Rectangle {
 
         Button {
             text: "+ Add Member";
-            bg-color: Theme.primary;
+            bg-color: Theme.accent-color;
             preferred-width: 120px;
         }
     }

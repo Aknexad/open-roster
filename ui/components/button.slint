@@ -3,15 +3,15 @@ import { Theme } from "../styles/theme.slint";
 
 export component Button inherits Rectangle {
     in-out property <string> text: "Button";
-    in-out property <color> bg-color: Theme.primary;
-    in-out property <color> text-color: #FFFFFF;
-    height: 36px;
+    in-out property <color> bg-color: Theme.accent-color;
+    in-out property <color> text-color: Theme.surface-color;
+    in property <string> variant: "primary"; // "primary" | "secondary" | "ghost" | "destructive"
+    height: Theme.heightMd;
     background: root.bg-color;
     border-radius: Theme.radiusMd;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-left: Theme.spacingLg;
+    padding-right: Theme.spacingLg;
+    min-width: 80px;
 
     HorizontalBox {
         spacing: Theme.spacingXs;
@@ -19,9 +19,15 @@ export component Button inherits Rectangle {
         Text {
             text: root.text;
             color: root.text-color;
-            font-size: Theme.fontSm;
+            font-size: Theme.fontMd;
             font-weight: Theme.weightMedium;
             vertical-alignment: center;
         }
+    }
+
+    // Hover state
+    animate background {
+        duration: 120ms;
+        easing: ease-out;
     }
 }

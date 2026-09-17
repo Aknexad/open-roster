@@ -11,7 +11,7 @@ export component MembersView inherits VerticalBox {
 
     HorizontalBox {
         spacing: Theme.spacingMd;
-        height: 40px;
+        height: Theme.heightMd;
 
         Input {
             placeholder: "Search members...";
@@ -28,16 +28,17 @@ export component MembersView inherits VerticalBox {
 
         Button {
             text: "Export";
-            bg-color: Theme.neutral50;
+            bg-color: Theme.surface-secondary-color;
+            text-color: Theme.text-primary-color;
             preferred-width: 80px;
-            height: 36px;
+            height: Theme.heightMd;
         }
     }
 
     Rectangle {
         width: 100%;
-        background: Theme.surfaceBg;
-        border-color: Theme.borderColor;
+        background: Theme.surface-color;
+        border-color: Theme.border-color;
         border-width: 1px;
         border-radius: Theme.radiusLg;
 
@@ -47,7 +48,7 @@ export component MembersView inherits VerticalBox {
             DataTableColumn {
                 label: "Name";
                 preferred-width: 200px;
-                background: Theme.neutral50;
+                background: Theme.surface-secondary-color;
             }
 
             DataTableRow {
@@ -57,11 +58,11 @@ export component MembersView inherits VerticalBox {
                 plan: "Premium Monthly";
                 expiry: "2025-03-15";
                 status: "Active";
-                status-color: Theme.success;
+                status-color: Theme.success-color;
                 action-text: "Renew";
-                action-color: Theme.primary;
-                border-color: Theme.neutral100;
-                background: Theme.surfaceBg;
+                action-color: Theme.accent-color;
+                border-color: Theme.border-color;
+                background: Theme.surface-color;
             }
 
             DataTableRow {
@@ -71,9 +72,9 @@ export component MembersView inherits VerticalBox {
                 plan: "Premium Quarterly";
                 expiry: "2025-06-20";
                 status: "Active";
-                status-color: Theme.success;
-                border-color: Theme.neutral100;
-                background: Theme.neutral50;
+                status-color: Theme.success-color;
+                border-color: Theme.border-color;
+                background: Theme.surface-secondary-color;
             }
 
             DataTableRow {
@@ -83,9 +84,9 @@ export component MembersView inherits VerticalBox {
                 plan: "Basic Monthly";
                 expiry: "2025-01-10";
                 status: "Expiring Soon";
-                status-color: Theme.warning;
-                border-color: Theme.neutral100;
-                background: Theme.surfaceBg;
+                status-color: Theme.warning-color;
+                border-color: Theme.border-color;
+                background: Theme.surface-color;
             }
         }
     }

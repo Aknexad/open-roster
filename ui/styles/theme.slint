@@ -1,13 +1,13 @@
 export global Theme {
-    // Theme mode — dark-mode is the default
+    // ── Theme mode ──
     in-out property <bool> dark-mode: true;
 
-    // Brand
+    // ── Brand ──
     in-out property <color> primary: #2563EB;
     in-out property <color> primaryHover: #1D4ED8;
     in-out property <color> primaryLight: #DBEAFE;
 
-    // Neutral – light palette
+    // ── Neutral light palette ──
     in-out property <color> neutral50: #F8FAFC;
     in-out property <color> neutral100: #F1F5F9;
     in-out property <color> neutral200: #E2E8F0;
@@ -19,7 +19,7 @@ export global Theme {
     in-out property <color> neutral800: #1E293B;
     in-out property <color> neutral900: #0F172A;
 
-    // Neutral – dark palette
+    // ── Neutral dark palette ──
     in-out property <color> n50-d: #020617;
     in-out property <color> n100-d: #0F172A;
     in-out property <color> n200-d: #1E293B;
@@ -31,57 +31,100 @@ export global Theme {
     in-out property <color> n800-d: #E2E8F0;
     in-out property <color> n900-d: #F1F5F9;
 
-    // Semantic
+    // ── Semantic colors (light) ──
+    in-out property <color> bg: #F8FAFC;
+    in-out property <color> surface: #FFFFFF;
+    in-out property <color> surface-secondary: #F1F5F9;
+    in-out property <color> surface-hover: #F8FAFC;
+    in-out property <color> border: #E2E8F0;
+    in-out property <color> text-primary: #0F172A;
+    in-out property <color> text-secondary: #475569;
+    in-out property <color> text-muted: #94A3B8;
+    in-out property <color> accent: #2563EB;
+    in-out property <color> accent-hover: #1D4ED8;
+    in-out property <color> danger: #EF4444;
     in-out property <color> success: #10B981;
-    in-out property <color> successLight: #ECFDF5;
-    in-out property <color> successLight-d: #064E3B;
     in-out property <color> warning: #F59E0B;
+
+    // ── Semantic colors (dark) ──
+    in-out property <color> bg-d: #020617;
+    in-out property <color> surface-d: #0F172A;
+    in-out property <color> surface-secondary-d: #1E293B;
+    in-out property <color> surface-hover-d: #1E293B;
+    in-out property <color> border-d: #1E293B;
+    in-out property <color> text-primary-d: #F1F5F9;
+    in-out property <color> text-secondary-d: #CBD5E1;
+    in-out property <color> text-muted-d: #64748B;
+    in-out property <color> accent-d: #3B82F6;
+    in-out property <color> accent-hover-d: #60A5FA;
+    in-out property <color> danger-d: #F87171;
+    in-out property <color> success-d: #34D399;
+    in-out property <color> warning-d: #FBBF24;
+
+    // ── Computed theme-aware colors ──
+    in-out property <color> background: dark-mode ? bg-d : bg;
+    in-out property <color> surface-color: dark-mode ? surface-d : surface;
+    in-out property <color> surface-secondary-color: dark-mode ? surface-secondary-d : surface-secondary;
+    in-out property <color> surface-hover-color: dark-mode ? surface-hover-d : surface-hover;
+    in-out property <color> border-color: dark-mode ? border-d : border;
+    in-out property <color> text-primary-color: dark-mode ? text-primary-d : text-primary;
+    in-out property <color> text-secondary-color: dark-mode ? text-secondary-d : text-secondary;
+    in-out property <color> text-muted-color: dark-mode ? text-muted-d : text-muted;
+    in-out property <color> accent-color: dark-mode ? accent-d : accent;
+    in-out property <color> accent-hover-color: dark-mode ? accent-hover-d : accent-hover;
+    in-out property <color> danger-color: dark-mode ? danger-d : danger;
+    in-out property <color> success-color: dark-mode ? success-d : success;
+    in-out property <color> warning-color: dark-mode ? warning-d : warning;
+
+    // ── Semantic light fills ──
+    in-out property <color> successLight: #ECFDF5;
     in-out property <color> warningLight: #FFFBEB;
-    in-out property <color> warningLight-d: #78350F;
-    in-out property <color> error: #EF4444;
     in-out property <color> errorLight: #FEF2F2;
-    in-out property <color> errorLight-d: #7F1D1D;
-    in-out property <color> info: #3B82F6;
     in-out property <color> infoLight: #EFF6FF;
+
+    // ── Semantic dark fills ──
+    in-out property <color> successLight-d: #064E3B;
+    in-out property <color> warningLight-d: #78350F;
+    in-out property <color> errorLight-d: #7F1D1D;
     in-out property <color> infoLight-d: #1E3A5F;
 
-    // Computed surfaces – react to dark-mode automatically
-    in-out property <color> surfaceBg: dark-mode ? n100-d : neutral50;
-    in-out property <color> pageBg: dark-mode ? n50-d : neutral50;
-    in-out property <color> cardBg: dark-mode ? n200-d : neutral50;
-    in-out property <color> inputBg: dark-mode ? n100-d : neutral50;
-    in-out property <color> hoverBg: dark-mode ? n200-d : neutral100;
-    in-out property <color> activeBg: dark-mode ? n300-d : primaryLight;
-
-    // Computed text colors
-    in-out property <color> textPrimary: dark-mode ? n800-d : neutral900;
-    in-out property <color> textSecondary: dark-mode ? n400-d : neutral600;
-    in-out property <color> textMuted: dark-mode ? n500-d : neutral400;
-    in-out property <color> textInverse: dark-mode ? n900-d : neutral50;
-
-    // Computed borders
-    in-out property <color> borderColor: dark-mode ? n200-d : neutral200;
-    in-out property <color> borderColorLight: dark-mode ? n300-d : neutral300;
-
-    // Computed semantic lights
+    // ── Computed semantic fills ──
     in-out property <color> successLightComputed: dark-mode ? successLight-d : successLight;
     in-out property <color> warningLightComputed: dark-mode ? warningLight-d : warningLight;
     in-out property <color> errorLightComputed: dark-mode ? errorLight-d : errorLight;
     in-out property <color> infoLightComputed: dark-mode ? infoLight-d : infoLight;
 
-    // Radii
+    // ── Shadows / elevation ──
+    // Shadows applied via drop-shadow in components
+    // ── Radii ──
     in-out property <length> radiusSm: 6px;
     in-out property <length> radiusMd: 8px;
     in-out property <length> radiusLg: 10px;
 
-    // Spacing
+    // ── Spacing scale ──
     in-out property <length> spacingXs: 4px;
     in-out property <length> spacingSm: 8px;
-    in-out property <length> spacingMd: 16px;
-    in-out property <length> spacingLg: 20px;
-    in-out property <length> spacingXl: 24px;
+    in-out property <length> spacingMd: 12px;
+    in-out property <length> spacingLg: 16px;
+    in-out property <length> spacingXl: 20px;
+    in-out property <length> spacing2xl: 24px;
+    in-out property <length> spacing3xl: 32px;
 
-    // Typography
+    // ── Component heights ──
+    in-out property <length> heightXs: 24px;
+    in-out property <length> heightSm: 32px;
+    in-out property <length> heightMd: 40px;
+    in-out property <length> heightLg: 44px;
+    in-out property <length> heightXl: 48px;
+
+    // ── Icon sizes ──
+    in-out property <length> iconXs: 14px;
+    in-out property <length> iconSm: 16px;
+    in-out property <length> iconMd: 18px;
+    in-out property <length> iconLg: 20px;
+    in-out property <length> iconXl: 24px;
+
+    // ── Typography ──
     in-out property <length> fontXs: 10px;
     in-out property <length> fontSm: 11px;
     in-out property <length> fontMd: 13px;
@@ -92,4 +135,11 @@ export global Theme {
     in-out property <int> weightMedium: 500;
     in-out property <int> weightSemibold: 600;
     in-out property <int> weightBold: 700;
+
+    // ── State colors ──
+    in-out property <color> hover-color: dark-mode ? n200-d : neutral100;
+    in-out property <color> pressed-color: dark-mode ? n300-d : neutral200;
+    in-out property <color> disabled-color: dark-mode ? n200-d : neutral100;
+    in-out property <color> disabled-text: dark-mode ? n500-d : neutral400;
+    in-out property <color> focus-ring: #2563EB;
 }

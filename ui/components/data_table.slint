@@ -8,18 +8,18 @@ import { Theme } from "../styles/theme.slint";
 export component DataTableColumn inherits Rectangle {
     in-out property <string> label: "";
     preferred-width: 100px;
-    height: 40px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background: Theme.neutral50;
-    border-color: Theme.borderColor;
+    height: Theme.heightMd;
+    padding-left: Theme.spacingMd;
+    padding-right: Theme.spacingMd;
+    padding-top: Theme.spacingSm;
+    padding-bottom: Theme.spacingSm;
+    background: Theme.surface-secondary-color;
+    border-color: Theme.border-color;
     border-width: 1px;
 
     Text {
         text: root.label;
-        color: Theme.neutral500;
+        color: Theme.text-secondary-color;
         font-size: Theme.fontXs;
         font-weight: Theme.weightSemibold;
     }
@@ -31,41 +31,43 @@ export component DataTableRow inherits Rectangle {
     in-out property <string> plan: "";
     in-out property <string> expiry: "";
     in-out property <string> status: "";
-    in-out property <color> status-color: Theme.success;
+    in-out property <color> status-color: Theme.success-color;
     in-out property <string> action-text: "Renew";
-    in-out property <color> action-color: Theme.primary;
+    in-out property <color> action-color: Theme.accent-color;
     in-out property <string> initials: "U";
 
-    height: 48px;
+    height: Theme.heightXl;
     width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-color: Theme.neutral100;
+    padding-left: Theme.spacingLg;
+    padding-right: Theme.spacingLg;
+    padding-top: Theme.spacingSm;
+    padding-bottom: Theme.spacingSm;
+    border-color: Theme.border-color;
     border-width: 1px;
+    background: Theme.surface-color;
 
     HorizontalBox {
         spacing: Theme.spacingSm;
 
         Rectangle {
-            width: 32px;
-            height: 32px;
-            background: Theme.primaryLight;
-            border-radius: 16px;
+            width: Theme.iconLg;
+            height: Theme.iconLg;
+            background: Theme.accent-color;
+            border-radius: Theme.iconLg;
 
             Text {
                 text: root.initials;
-                color: Theme.primary;
+                color: Theme.surface-color;
                 font-size: Theme.fontXs;
                 font-weight: Theme.weightSemibold;
                 horizontal-alignment: center;
+                vertical-alignment: center;
             }
         }
 
         Text {
             text: root.name;
-            color: Theme.neutral800;
+            color: Theme.text-primary-color;
             font-size: Theme.fontMd;
             font-weight: Theme.weightMedium;
             width: 200px;
@@ -73,21 +75,21 @@ export component DataTableRow inherits Rectangle {
 
         Text {
             text: root.phone;
-            color: Theme.neutral800;
+            color: Theme.text-primary-color;
             font-size: Theme.fontMd;
             width: 160px;
         }
 
         Text {
             text: root.plan;
-            color: Theme.neutral800;
+            color: Theme.text-primary-color;
             font-size: Theme.fontMd;
             width: 140px;
         }
 
         Text {
             text: root.expiry;
-            color: Theme.neutral800;
+            color: Theme.text-primary-color;
             font-size: Theme.fontMd;
             width: 160px;
         }

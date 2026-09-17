@@ -4,8 +4,8 @@ import { ThemeToggle } from "./theme_toggle.slint";
 
 export component LeftSidBar inherits Rectangle {
     width: 240px;
-    background: Theme.surfaceBg;
-    border-color: Theme.borderColor;
+    background: Theme.surface-color;
+    border-color: Theme.border-color;
     border-width: 1px;
 
     VerticalBox {
@@ -22,12 +22,12 @@ export component LeftSidBar inherits Rectangle {
                 Rectangle {
                     width: 32px;
                     height: 32px;
-                    background: Theme.primary;
+                    background: Theme.accent-color;
                     border-radius: Theme.radiusMd;
 
                     Text {
                         text: "OM";
-                        color: #FFFFFF;
+                        color: Theme.surface-color;
                         font-size: 14px;
                         font-weight: Theme.weightBold;
                         horizontal-alignment: center;
@@ -40,14 +40,14 @@ export component LeftSidBar inherits Rectangle {
 
                     Text {
                         text: "OpenMember";
-                        color: Theme.neutral800;
+                        color: Theme.text-primary-color;
                         font-size: Theme.fontXl;
                         font-weight: Theme.weightSemibold;
                     }
 
                     Text {
                         text: "Membership Management";
-                        color: Theme.neutral500;
+                        color: Theme.text-muted-color;
                         font-size: Theme.fontXs;
                     }
                 }
@@ -56,25 +56,25 @@ export component LeftSidBar inherits Rectangle {
 
         // Navigation Links
         Rectangle {
-            background: Theme.primaryLight;
+            background: Theme.accent-color;
             border-radius: Theme.radiusMd;
-            height: 55px;
+            height: Theme.heightLg;
 
             HorizontalBox {
                 spacing: Theme.spacingMd;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: Theme.spacingLg;
+                padding-right: Theme.spacingLg;
 
                 Image {
                     source: @image-url("../../assets/icons/kanban.svg");
                     vertical-alignment: center;
                     image-fit: contain;
-                    width: 25px;
+                    width: Theme.iconLg;
                 }
 
                 Text {
                     text: "Dashboard";
-                    color: Theme.primary;
+                    color: Theme.surface-color;
                     font-size: Theme.fontMd;
                     font-weight: Theme.weightMedium;
                     vertical-alignment: center;
@@ -83,9 +83,10 @@ export component LeftSidBar inherits Rectangle {
         }
 
         Rectangle {
-            height: 55px;
-            padding-left: 12px;
-            padding-right: 12px;
+            height: Theme.heightLg;
+            padding-left: Theme.spacingLg;
+            padding-right: Theme.spacingLg;
+            border-radius: Theme.radiusMd;
 
             HorizontalBox {
                 spacing: Theme.spacingMd;
@@ -94,12 +95,12 @@ export component LeftSidBar inherits Rectangle {
                     source: @image-url("../../assets/icons/user-group.svg");
                     vertical-alignment: center;
                     image-fit: contain;
-                    width: 25px;
+                    width: Theme.iconLg;
                 }
 
                 Text {
                     text: "Members";
-                    color: Theme.neutral500;
+                    color: Theme.text-muted-color;
                     font-size: Theme.fontMd;
                     vertical-alignment: center;
                 }
@@ -107,9 +108,10 @@ export component LeftSidBar inherits Rectangle {
         }
 
         Rectangle {
-            height: 55px;
-            padding-left: 12px;
-            padding-right: 12px;
+            height: Theme.heightLg;
+            padding-left: Theme.spacingLg;
+            padding-right: Theme.spacingLg;
+            border-radius: Theme.radiusMd;
 
             HorizontalBox {
                 spacing: Theme.spacingMd;
@@ -118,12 +120,12 @@ export component LeftSidBar inherits Rectangle {
                     source: @image-url("../../assets/icons/credit-card.svg");
                     vertical-alignment: center;
                     image-fit: contain;
-                    width: 25px;
+                    width: Theme.iconLg;
                 }
 
                 Text {
                     text: "Plans";
-                    color: Theme.neutral500;
+                    color: Theme.text-muted-color;
                     font-size: Theme.fontMd;
                     vertical-alignment: center;
                 }
@@ -131,9 +133,10 @@ export component LeftSidBar inherits Rectangle {
         }
 
         Rectangle {
-            height: 55px;
-            padding-left: 12px;
-            padding-right: 12px;
+            height: Theme.heightLg;
+            padding-left: Theme.spacingLg;
+            padding-right: Theme.spacingLg;
+            border-radius: Theme.radiusMd;
 
             HorizontalBox {
                 spacing: Theme.spacingMd;
@@ -142,12 +145,12 @@ export component LeftSidBar inherits Rectangle {
                     source: @image-url("../../assets/icons/cog.svg");
                     vertical-alignment: center;
                     image-fit: contain;
-                    width: 25px;
+                    width: Theme.iconLg;
                 }
 
                 Text {
                     text: "Settings";
-                    color: Theme.neutral500;
+                    color: Theme.text-muted-color;
                     font-size: Theme.fontMd;
                     vertical-alignment: center;
                 }
@@ -157,11 +160,11 @@ export component LeftSidBar inherits Rectangle {
         // Footer
         Rectangle {
             background: transparent;
-            height: 50px;
-            border-color: Theme.borderColor;
+            height: Theme.heightLg;
+            border-color: Theme.border-color;
             border-width: 1px;
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: Theme.spacingLg;
+            padding-right: Theme.spacingLg;
 
             HorizontalBox {
                 spacing: Theme.spacingMd;
@@ -170,12 +173,12 @@ export component LeftSidBar inherits Rectangle {
                     source: @image-url("../../assets/icons/circle-check-big.svg");
                     vertical-alignment: center;
                     image-fit: contain;
-                    width: 25px;
+                    width: Theme.iconLg;
                 }
 
                 Text {
                     text: "v0.0.1";
-                    color: Theme.neutral500;
+                    color: Theme.text-muted-color;
                     font-size: Theme.fontLg;
                     vertical-alignment: center;
                 }

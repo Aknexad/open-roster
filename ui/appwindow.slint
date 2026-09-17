@@ -10,7 +10,9 @@ export component MainWindow inherits Window {
     title: "OpenMember - Membership Management";
     width: 1280px;
     height: 800px;
-    background: Theme.pageBg;
+    background: Theme.background;
+
+    callback theme-toggled();
 
     HorizontalBox {
         spacing: 0px;

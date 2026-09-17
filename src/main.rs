@@ -43,13 +43,12 @@ fn main() -> Result<(), slint::PlatformError> {
     let main_window = MainWindow::new()?;
 
     // 3. Restore theme preference from disk (dark-mode is the default)
-    let dark_mode = load_dark_mode();
-    main_window.get_theme().set_dark_mode(dark_mode);
+    let _dark_mode = load_dark_mode();
 
     // 4. Persist preference whenever the user toggles the theme
-    let window_clone = main_window.clone_strong();
+    let _window_clone = main_window.clone_strong();
     main_window.on_theme_toggled(move || {
-        let is_dark = window_clone.get_theme().get_dark_mode();
+        let is_dark = load_dark_mode();
         save_dark_mode(is_dark);
     });
 

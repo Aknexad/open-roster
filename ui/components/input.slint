@@ -3,20 +3,20 @@ import { Theme } from "../styles/theme.slint";
 
 export component Input inherits Rectangle {
     in-out property <string> placeholder: "Enter text...";
-    height: 38px;
-    background: Theme.pageBg;
-    border-color: Theme.borderColor;
+    height: Theme.heightMd;
+    background: Theme.surface-color;
+    border-color: Theme.border-color;
     border-width: 1px;
     border-radius: Theme.radiusMd;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: Theme.spacingMd;
+    padding-right: Theme.spacingMd;
 
     HorizontalBox {
         spacing: Theme.spacingSm;
 
         Text {
             text: root.placeholder;
-            color: Theme.neutral400;
+            color: Theme.text-muted-color;
             font-size: Theme.fontMd;
             vertical-alignment: center;
         }

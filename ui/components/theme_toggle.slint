@@ -4,7 +4,7 @@ import { Theme } from "../styles/theme.slint";
 export component ThemeToggle inherits Rectangle {
     width: 48px;
     height: 26px;
-    background: root.enabled ? (Theme.dark-mode ? Theme.primary : Theme.neutral300) : Theme.neutral300;
+    background: root.enabled ? (Theme.dark-mode ? Theme.accent-color : Theme.neutral300) : Theme.disabled-color;
     border-radius: 13px;
 
     property <bool> enabled: true;
@@ -22,9 +22,9 @@ export component ThemeToggle inherits Rectangle {
         x: Theme.dark-mode ? parent.width - 22px : 2px;
         width: 22px;
         height: 22px;
-        background: Theme.surfaceBg;
+        background: Theme.surface-color;
         border-radius: 11px;
-        border-color: Theme.borderColor;
+        border-color: Theme.border-color;
         border-width: 1px;
 
         Text {

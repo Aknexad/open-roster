@@ -8,13 +8,13 @@ export component Pagination inherits Rectangle {
     in-out property <int> current-page: 1;
     in-out property <int> total-pages: 1;
 
-    height: 44px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: Theme.surfaceBg;
-    border-color: Theme.borderColor;
+    height: Theme.heightLg;
+    padding-left: Theme.spacingLg;
+    padding-right: Theme.spacingLg;
+    padding-top: Theme.spacingSm;
+    padding-bottom: Theme.spacingSm;
+    background: Theme.surface-color;
+    border-color: Theme.border-color;
     border-width: 1px;
     border-radius: Theme.radiusLg;
 
@@ -23,56 +23,56 @@ export component Pagination inherits Rectangle {
 
         Text {
             text: root.showing-text;
-            color: Theme.neutral500;
+            color: Theme.text-muted-color;
             font-size: Theme.fontMd;
         }
 
         Text {
             text: root.range-text;
-            color: Theme.neutral800;
+            color: Theme.text-primary-color;
             font-size: Theme.fontMd;
             font-weight: Theme.weightSemibold;
         }
 
         Text {
             text: root.total-text;
-            color: Theme.neutral500;
+            color: Theme.text-muted-color;
             font-size: Theme.fontMd;
         }
 
         Rectangle { } // spacer
 
         Rectangle {
-            height: 30px;
-            padding-left: 12px;
-            padding-right: 12px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            background: Theme.neutral50;
-            border-color: Theme.borderColor;
+            height: Theme.heightSm;
+            padding-left: Theme.spacingMd;
+            padding-right: Theme.spacingMd;
+            padding-top: Theme.spacingXs;
+            padding-bottom: Theme.spacingXs;
+            background: Theme.surface-secondary-color;
+            border-color: Theme.border-color;
             border-width: 1px;
             border-radius: Theme.radiusSm;
 
             Text {
                 text: "←";
-                color: Theme.neutral500;
+                color: Theme.text-muted-color;
                 font-size: Theme.fontXs;
                 vertical-alignment: center;
             }
         }
 
         Rectangle {
-            height: 30px;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            background: Theme.primary;
+            height: Theme.heightSm;
+            padding-left: Theme.spacingMd;
+            padding-right: Theme.spacingMd;
+            padding-top: Theme.spacingXs;
+            padding-bottom: Theme.spacingXs;
+            background: Theme.accent-color;
             border-radius: Theme.radiusSm;
 
             Text {
                 text: "1";
-                color: #FFFFFF;
+                color: Theme.surface-color;
                 font-size: Theme.fontXs;
                 font-weight: Theme.weightSemibold;
                 horizontal-alignment: center;
@@ -81,19 +81,19 @@ export component Pagination inherits Rectangle {
         }
 
         Rectangle {
-            height: 30px;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            background: Theme.neutral50;
-            border-color: Theme.borderColor;
+            height: Theme.heightSm;
+            padding-left: Theme.spacingMd;
+            padding-right: Theme.spacingMd;
+            padding-top: Theme.spacingXs;
+            padding-bottom: Theme.spacingXs;
+            background: Theme.surface-secondary-color;
+            border-color: Theme.border-color;
             border-width: 1px;
             border-radius: Theme.radiusSm;
 
             Text {
                 text: "2";
-                color: Theme.neutral500;
+                color: Theme.text-muted-color;
                 font-size: Theme.fontXs;
                 horizontal-alignment: center;
                 vertical-alignment: center;
@@ -101,19 +101,19 @@ export component Pagination inherits Rectangle {
         }
 
         Rectangle {
-            height: 30px;
-            padding-left: 12px;
-            padding-right: 12px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            background: Theme.neutral50;
-            border-color: Theme.borderColor;
+            height: Theme.heightSm;
+            padding-left: Theme.spacingMd;
+            padding-right: Theme.spacingMd;
+            padding-top: Theme.spacingXs;
+            padding-bottom: Theme.spacingXs;
+            background: Theme.surface-secondary-color;
+            border-color: Theme.border-color;
             border-width: 1px;
             border-radius: Theme.radiusSm;
 
             Text {
                 text: "→";
-                color: Theme.neutral500;
+                color: Theme.text-muted-color;
                 font-size: Theme.fontXs;
                 vertical-alignment: center;
             }

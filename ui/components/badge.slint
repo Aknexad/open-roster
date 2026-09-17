@@ -4,26 +4,26 @@ import { Theme } from "../styles/theme.slint";
 export component Badge inherits Rectangle {
     in-out property <string> text: "";
     in-out property <color> bg-color: Theme.infoLight;
-    in-out property <color> text-color: Theme.info;
+    in-out property <color> text-color: Theme.accent-color;
     in-out property <bool> has-dot: false;
-    in-out property <color> dot-color: Theme.info;
+    in-out property <color> dot-color: Theme.accent-color;
 
-    height: 24px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    height: Theme.heightXs;
+    padding-left: Theme.spacingMd;
+    padding-right: Theme.spacingMd;
+    padding-top: Theme.spacingXs;
+    padding-bottom: Theme.spacingXs;
     background: root.bg-color;
-    border-radius: 12px;
+    border-radius: Theme.heightXs;
 
     HorizontalBox {
-        spacing: 4px;
+        spacing: Theme.spacingXs;
 
         Rectangle {
-            width: 6px;
-            height: 6px;
+            width: Theme.iconXs;
+            height: Theme.iconXs;
             background: root.dot-color;
-            border-radius: 3px;
+            border-radius: Theme.iconXs;
             visible: root.has-dot;
         }
 

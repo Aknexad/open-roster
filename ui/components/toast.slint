@@ -3,12 +3,12 @@ import { Theme } from "../styles/theme.slint";
 
 export component Toast inherits Rectangle {
     property <string> message: "";
-    height: 44px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: Theme.neutral800;
+    height: Theme.heightLg;
+    padding-left: Theme.spacingLg;
+    padding-right: Theme.spacingLg;
+    padding-top: Theme.spacingSm;
+    padding-bottom: Theme.spacingSm;
+    background: Theme.text-primary-color;
     border-radius: Theme.radiusMd;
 
     HorizontalBox {
@@ -16,7 +16,7 @@ export component Toast inherits Rectangle {
 
         Text {
             text: root.message;
-            color: #FFFFFF;
+            color: Theme.surface-color;
             font-size: Theme.fontSm;
             vertical-alignment: center;
         }
