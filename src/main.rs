@@ -18,12 +18,13 @@ fn config_path() -> PathBuf {
 fn load_dark_mode() -> bool {
     let path = config_path();
     match std::fs::read_to_string(&path) {
-        Ok(content) => {
-            match serde_json::from_str::<serde_json::Value>(&content) {
-                Ok(val) => val.get("dark_mode").and_then(|v| v.as_bool()).unwrap_or(true),
-                Err(_) => true,
-            }
-        }
+        Ok(content) => match serde_json::from_str::<serde_json::Value>(&content) {
+            Ok(val) => val
+                .get("dark_mode")
+                .and_then(|v| v.as_bool())
+                .unwrap_or(true),
+            Err(_) => true,
+        },
         Err(_) => true,
     }
 }

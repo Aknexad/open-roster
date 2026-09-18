@@ -4,24 +4,25 @@ import { Input } from "./input.slint";
 import { Button } from "./button.slint";
 
 export component TopToolbar inherits Rectangle {
-    height: Theme.heightXl;
-    padding: Theme.spacingMd;
+    height: Theme.heightXXL;
+    // padding: Theme.spacingMd;
+
     background: Theme.surface-color;
     border-color: Theme.border-color;
     border-width: 1px;
 
     HorizontalBox {
-        spacing: Theme.spacingMd;
+        spacing: Theme.spacingLg;
 
         Input {
             placeholder: "Search members...";
-            preferred-width: 280px;
+            preferred-width: 350px;
         }
 
         Button {
             text: "+ Add Member";
             bg-color: Theme.accent-color;
-            preferred-width: 120px;
+            preferred-width: 50px;
         }
     }
 }
