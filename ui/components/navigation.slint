@@ -1,0 +1,99 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+
+component NavigationItem inherits Rectangle {
+    in property <image> icon;
+    in property <string> label;
+    in property <bool> active;
+
+    // Derived state
+    property <bool> hovered: touch.has-hover;
+
+    callback clicked();
+
+    height: Theme.heightLg;
+    border-radius: Theme.radiusMd;
+
+    background: active
+        ? Theme.accent-color
+        : hovered
+        ? Theme.surface-hover-color
+        : transparent;
+
+    HorizontalBox {
+        spacing: Theme.spacingMd;
+        padding-left: Theme.spacingLg;
+        padding-right: Theme.spacingLg;
+
+        Image {
+            source: icon;
+            vertical-alignment: center;
+            image-fit: contain;
+            width: Theme.iconLg;
+        }
+
+        Text {
+            text: label;
+            color: active
+                ? Theme.surface-color
+                : Theme.text-muted-color;
+            font-size: Theme.fontMd;
+            font-weight: active
+                ? Theme.weightMedium
+                : Theme.weightRegular;
+            vertical-alignment: center;
+        }
+    }
+
+    touch := TouchArea {
+        clicked => {
+            root.clicked();
+        }
+    }
+}
+
+
+export component NavigationMenuEn inherits VerticalBox {
+    callback navigate(string);
+
+    NavigationItem {
+        label: "Dashboard";
+        icon: @image-url("../../assets/icons/kanban.svg");
+        active: true;
+
+        clicked => {
+            root.navigate("dashboard");
+        }
+    }
+
+    NavigationItem {
+        label: "Members";
+        icon: @image-url("../../assets/icons/user-group.svg");
+        active: false;
+
+        clicked => {
+            root.navigate("members");
+        }
+    }
+
+    NavigationItem {
+        label: "Plans";
+        icon: @image-url("../../assets/icons/credit-card.svg");
+        active: false;
+
+        clicked => {
+            root.navigate("plans");
+        }
+    }
+
+    NavigationItem {
+        label: "Settings";
+        icon: @image-url("../../assets/icons/cog.svg");
+        active: false;
+
+        clicked => {
+            root.navigate("settings");
+        }
+    }
+}

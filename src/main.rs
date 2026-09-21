@@ -13,8 +13,9 @@ fn config_path() -> PathBuf {
     path
 }
 
-/// Load the dark-mode preference from disk. Returns `true` (dark) if the file
-/// doesn't exist or is malformed — dark mode is the default.
+
+// Load the dark-mode preference from disk. Returns `true` (dark) if the file
+// doesn't exist or is malformed — dark mode is the default.
 fn load_dark_mode() -> bool {
     let path = config_path();
     match std::fs::read_to_string(&path) {
@@ -52,6 +53,7 @@ fn main() -> Result<(), slint::PlatformError> {
         let is_dark = load_dark_mode();
         save_dark_mode(is_dark);
     });
+
 
     // 5. Run the event loop
     main_window.run()

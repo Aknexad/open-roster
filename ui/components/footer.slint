@@ -1,0 +1,39 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+import { ThemeToggle } from "./theme_toggle.slint";
+
+
+
+export component Footer inherits VerticalBox {
+    padding-top: 400px;
+    Rectangle {
+        background: transparent;
+        height: Theme.heightLg;
+        border-color: Theme.border-color;
+        border-width: 1px;
+        padding-left: Theme.spacingLg;
+        padding-right: Theme.spacingLg;
+
+        HorizontalBox {
+            spacing: Theme.spacingMd;
+
+            Image {
+                source: @image-url("../../assets/icons/circle-check-big.svg");
+                vertical-alignment: center;
+                image-fit: contain;
+                width: Theme.iconLg;
+            }
+
+            Text {
+                text: "v0.0.1";
+                color: Theme.text-muted-color;
+                font-size: Theme.fontLg;
+                vertical-alignment: center;
+            }
+
+            Rectangle { } // spacer
+
+                ThemeToggle { }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+
+export component AppHeaderEn inherits VerticalBox {
+    Rectangle {
+        background: transparent;
+
+        HorizontalBox {
+            spacing: Theme.spacingSm;
+
+            Rectangle {
+                width: 32px;
+                height: 32px;
+                background: Theme.accent-color;
+                border-radius: Theme.radiusMd;
+
+                Text {
+                    text: "OM";
+                    color: Theme.surface-color;
+                    font-size: 14px;
+                    font-weight: Theme.weightBold;
+                    horizontal-alignment: center;
+                    vertical-alignment: center;
+                }
+            }
+
+            VerticalBox {
+                spacing: 2px;
+
+                Text {
+                    text: "OpenMember";
+                    color: Theme.text-primary-color;
+                    font-size: Theme.fontXl;
+                    font-weight: Theme.weightSemibold;
+                }
+
+                Text {
+                    text: "Membership Management";
+                    color: Theme.text-muted-color;
+                    font-size: Theme.fontXs;
+                }
+            }
+        }
+    }
+}
