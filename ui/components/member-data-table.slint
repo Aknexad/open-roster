@@ -1,0 +1,19 @@
+import {
+    VerticalBox,
+    HorizontalBox,
+    StandardTableView,
+} from "std-widgets.slint";
+import { Theme } from "../styles/theme.slint";
+
+
+
+export component MemberDataTable inherits StandardTableView {
+    width: 930px;
+
+    columns: [{ title:"id" }, { title:"name" }, { title:"status" }, { title:"expireDate" }];
+
+    rows: [
+        [{ text:1 }, { text:"user 1" }, { text:"Active" }, { text:"22/09/2026" }],
+        [{ text:2 }, { text:"user 2" }, { text:"Active" }, { text:"22/10/2026" }]
+    ];
+}

@@ -5,7 +5,6 @@ import { Button } from "./button.slint";
 
 export component TopToolbar inherits Rectangle {
     height: Theme.heightXXL;
-    // padding: Theme.spacingMd;
 
     background: Theme.surface-color;
     border-color: Theme.border-color;
@@ -16,13 +15,12 @@ export component TopToolbar inherits Rectangle {
 
         Input {
             placeholder: "Search members...";
-            preferred-width: 350px;
+            width: 870px;
         }
 
         Button {
             text: "+ Add Member";
             bg-color: Theme.accent-color;
-            preferred-width: 50px;
         }
     }
 }

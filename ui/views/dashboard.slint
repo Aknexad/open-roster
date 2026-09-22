@@ -1,36 +1,34 @@
 import { VerticalBox, HorizontalBox } from "std-widgets.slint";
 import { Card } from "../components/card.slint";
 import { Theme } from "../styles/theme.slint";
+import { StatusBoard } from "../components/status-board.slint";
+import { MembersView } from "./members.slint";
+import { MemberDataTable } from "../components/member-data-table.slint";
 
 export component DashboardView inherits VerticalBox {
     spacing: Theme.spacingXl;
     padding: Theme.spacingXl;
 
-    HorizontalBox {
-        spacing: Theme.spacingLg;
+    // status board
+    StatusBoard {
+        height: 20%;
+    }
 
-        Card {
-            title: "Active Members";
-            value: "128";
-            subtitle: "Currently active memberships";
-            icon-text: "✓";
-            icon-bg: Theme.successLight;
-        }
-
-        Card {
-            title: "Expiring Soon";
-            value: "5";
-            subtitle: "Expiring within 30 days";
-            icon-text: "⚠";
-            icon-bg: Theme.warningLight;
-        }
-
-        Card {
-            title: "Expired";
-            value: "8";
-            subtitle: "Expired memberships";
-            icon-text: "✕";
-            icon-bg: Theme.errorLight;
+    // member table title
+    Rectangle {
+        width: 100%;
+        height: 7%;
+        background: Theme.surface-color;
+        border-radius: 15px;
+        Text {
+            width: 95%;
+            height: 100%;
+            text: "Members Table";
+            horizontal-alignment: start;
+            vertical-alignment: center;
         }
     }
+
+    //member tables
+    MemberDataTable { }
 }
