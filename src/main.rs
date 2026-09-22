@@ -42,7 +42,7 @@ fn save_dark_mode(dark: bool) {
 
 fn main() -> Result<(), slint::PlatformError> {
     // 2. Instantiate the window defined in appwindow.slint
-    let main_window = MainWindow::new()?;
+    let main_window = AppWindow::new()?;
 
     // 3. Restore theme preference from disk (dark-mode is the default)
     let _dark_mode = load_dark_mode();
@@ -53,6 +53,7 @@ fn main() -> Result<(), slint::PlatformError> {
         let is_dark = load_dark_mode();
         save_dark_mode(is_dark);
     });
+
 
 
     // 5. Run the event loop
