@@ -1,6 +1,5 @@
 // src/main.rs
 
-// 1. Include generated Slint code
 slint::include_modules!();
 
 use std::path::PathBuf;
@@ -13,16 +12,14 @@ fn config_path() -> PathBuf {
     path
 }
 
-
-// Load the dark-mode preference from disk. Returns `true` (dark) if the file
-// doesn't exist or is malformed — dark mode is the default.
+/// Load the dark-mode preference from disk. Dark mode is the default.
 fn load_dark_mode() -> bool {
     let path = config_path();
     match std::fs::read_to_string(&path) {
         Ok(content) => match serde_json::from_str::<serde_json::Value>(&content) {
-            Ok(val) => val
+            Ok(value) => value
                 .get("dark_mode")
-                .and_then(|v| v.as_bool())
+                .and_then(|value| value.as_bool())
                 .unwrap_or(true),
             Err(_) => true,
         },
@@ -36,26 +33,33 @@ fn save_dark_mode(dark: bool) {
     if let Some(parent) = path.parent() {
         let _ = std::fs::create_dir_all(parent);
     }
+
     let json = serde_json::json!({ "dark_mode": dark });
     let _ = std::fs::write(&path, json.to_string());
 }
 
+/// Handle navigation emitted by the Slint navigation menu.
+fn handle_navigation(view: String) {
+    println!("Navigating to: {view}");
+
+    // Load data or perform other Rust-side work for the selected view here.
+    // The visible view is updated directly by AppWindow's Slint callback.
+}
+
 fn main() -> Result<(), slint::PlatformError> {
-    // 2. Instantiate the window defined in appwindow.slint
     let main_window = AppWindow::new()?;
 
-    // 3. Restore theme preference from disk (dark-mode is the default)
     let _dark_mode = load_dark_mode();
 
-    // 4. Persist preference whenever the user toggles the theme
     let _window_clone = main_window.clone_strong();
     main_window.on_theme_toggled(move || {
-        let is_dark = load_dark_mode();
-        save_dark_mode(is_dark);
+        let dark_mode = load_dark_mode();
+        save_dark_mode(dark_mode);
     });
 
+    main_window.on_navigate(|view| {
+        handle_navigation(view.to_string());
+    });
 
-
-    // 5. Run the event loop
     main_window.run()
 }

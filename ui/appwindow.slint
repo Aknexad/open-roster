@@ -13,12 +13,18 @@ export component AppWindow inherits Window {
     background: Theme.background;
 
     callback theme-toggled();
+    callback navigate(string);
 
     HorizontalBox {
         spacing: 0px;
 
-        LeftSidBar { }
+        sidebar := LeftSidBar {
+            navigate(view) => {
+                main_window.current-view = view;
+                root.navigate(view);
+            }
+        }
 
-        MainWindow { }
+        main_window := MainWindow { }
     }
 }

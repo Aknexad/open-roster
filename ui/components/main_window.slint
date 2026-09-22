@@ -7,9 +7,26 @@ import { SettingsView } from "../views/settings.slint";
 import { Theme } from "../styles/theme.slint";
 
 export component MainWindow inherits VerticalBox {
+    // ── Current view state ──
+    in-out property <string> current-view: "dashboard";
+
     // ── Top Toolbar ──
     TopToolbar { }
 
-    // ── View Slot (Dashboard default) ──
-    DashboardView { }
+    // ── View Slot (dynamically shown based on current-view) ──
+    DashboardView {
+        visible: current-view == "dashboard";
+    }
+
+    MembersView {
+        visible: current-view == "members";
+    }
+
+    PlansView {
+        visible: current-view == "plans";
+    }
+
+    SettingsView {
+        visible: current-view == "settings";
+    }
 }

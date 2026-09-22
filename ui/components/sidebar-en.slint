@@ -10,6 +10,9 @@ export component LeftSidBar inherits Rectangle {
     border-color: Theme.border-color;
     border-width: 1px;
 
+    // Accept navigate callback from parent
+    callback navigate(string);
+
     VerticalBox {
         spacing: Theme.spacingMd;
         padding: Theme.spacingMd;
@@ -17,8 +20,10 @@ export component LeftSidBar inherits Rectangle {
         // App Header
         AppHeaderEn { }
 
-        // Navigation Links
-        NavigationMenuEn { }
+        // Navigation Links - forward navigate callback
+        NavigationMenuEn {
+            navigate(view) => { root.navigate(view); }
+        }
 
         // Footer
         Footer { }
