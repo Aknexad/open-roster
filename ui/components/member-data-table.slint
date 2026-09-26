@@ -8,12 +8,12 @@ import { Theme } from "../styles/theme.slint";
 
 
 export component MemberDataTable inherits StandardTableView {
-    width: 930px;
 
-    columns: [{ title:"id" }, { title:"name" }, { title:"status" }, { title:"expireDate" }];
-
-    rows: [
-        [{ text:1 }, { text:"user 1" }, { text:"Active" }, { text:"22/09/2026" }],
-        [{ text:2 }, { text:"user 2" }, { text:"Active" }, { text:"22/10/2026" }]
+    columns: [
+        { title:"Id", width: 50px },
+        { title:"Name", width: 100px },
+        { title:"last Name", width: 180px },
+        { title:"Status", width: 80px },
+        { title:"Expire Date" }
     ];
 }

@@ -1,9 +1,113 @@
-import { VerticalBox, HorizontalBox, ComboBox } from "std-widgets.slint";
+import {
+    VerticalBox,
+    HorizontalBox,
+    ComboBox,
+    StandardTableView,
+} from "std-widgets.slint";
 import { DataTableRow, DataTableColumn } from "../components/data_table.slint";
 import { Pagination } from "../components/pagination.slint";
 import { Button } from "../components/button.slint";
 import { Input } from "../components/input.slint";
 import { Theme } from "../styles/theme.slint";
+import { MemberDataTable } from "../components/member-data-table.slint";
+
+// export component MembersView inherits VerticalBox {
+//     spacing: Theme.spacingLg;
+//     padding: Theme.spacingXl;
+
+//     HorizontalBox {
+//         spacing: Theme.spacingMd;
+//         height: Theme.heightMd;
+
+//         Input {
+//             placeholder: "Search members...";
+//             preferred-width: 280px;
+//         }
+
+//         ComboBox {
+//             preferred-width: 160px;
+//             current-index: 0;
+//             model: ["All Status", "Active", "Expiring Soon", "Expired"];
+//         }
+
+//         Rectangle { } // spacer
+
+//         Button {
+//             text: "Export";
+//             bg-color: Theme.surface-secondary-color;
+//             text-color: Theme.text-primary-color;
+//             preferred-width: 80px;
+//             height: Theme.heightMd;
+//         }
+//     }
+
+//     Rectangle {
+//         width: 100%;
+//         background: Theme.surface-color;
+//         border-color: Theme.border-color;
+//         border-width: 1px;
+//         border-radius: Theme.radiusLg;
+
+//         VerticalBox {
+//             spacing: 0px;
+
+//             DataTableColumn {
+//                 label: "Name";
+//                 preferred-width: 200px;
+//                 background: Theme.surface-secondary-color;
+//             }
+
+//             DataTableRow {
+//                 name: "Ali Rezaei";
+//                 initials: "AR";
+//                 phone: "0912 123 4567";
+//                 plan: "Premium Monthly";
+//                 expiry: "2025-03-15";
+//                 status: "Active";
+//                 status-color: Theme.success-color;
+//                 action-text: "Renew";
+//                 action-color: Theme.accent-color;
+//                 border-color: Theme.border-color;
+//                 background: Theme.surface-color;
+//             }
+
+//             DataTableRow {
+//                 name: "Sareh Mohammadi";
+//                 initials: "SM";
+//                 phone: "0913 987 6543";
+//                 plan: "Premium Quarterly";
+//                 expiry: "2025-06-20";
+//                 status: "Active";
+//                 status-color: Theme.success-color;
+//                 border-color: Theme.border-color;
+//                 background: Theme.surface-secondary-color;
+//             }
+
+//             DataTableRow {
+//                 name: "Mehdi Karimi";
+//                 initials: "MK";
+//                 phone: "0914 456 7890";
+//                 plan: "Basic Monthly";
+//                 expiry: "2025-01-10";
+//                 status: "Expiring Soon";
+//                 status-color: Theme.warning-color;
+//                 border-color: Theme.border-color;
+//                 background: Theme.surface-color;
+//             }
+//         }
+//     }
+
+//     Pagination {
+//         showing-text: "Showing";
+//         range-text: "1 to 8";
+//         total-text: "of 8 members";
+//         current-page: 1;
+//         total-pages: 2;
+//     }
+// } 
+
+
+
 
 export component MembersView inherits VerticalBox {
     spacing: Theme.spacingLg;
@@ -14,81 +118,27 @@ export component MembersView inherits VerticalBox {
         height: Theme.heightMd;
 
         Input {
-            placeholder: "Search members...";
-            preferred-width: 280px;
+            placeholder: "Search name...";
+            preferred-width: 400px;
         }
 
         ComboBox {
-            preferred-width: 160px;
+            preferred-width: 120px;
             current-index: 0;
             model: ["All Status", "Active", "Expiring Soon", "Expired"];
         }
-
-        Rectangle { } // spacer
-
-        Button {
-            text: "Export";
-            bg-color: Theme.surface-secondary-color;
-            text-color: Theme.text-primary-color;
-            preferred-width: 80px;
-            height: Theme.heightMd;
-        }
     }
 
-    Rectangle {
-        width: 100%;
-        background: Theme.surface-color;
-        border-color: Theme.border-color;
-        border-width: 1px;
-        border-radius: Theme.radiusLg;
-
-        VerticalBox {
-            spacing: 0px;
-
-            DataTableColumn {
-                label: "Name";
-                preferred-width: 200px;
-                background: Theme.surface-secondary-color;
-            }
-
-            DataTableRow {
-                name: "Ali Rezaei";
-                initials: "AR";
-                phone: "0912 123 4567";
-                plan: "Premium Monthly";
-                expiry: "2025-03-15";
-                status: "Active";
-                status-color: Theme.success-color;
-                action-text: "Renew";
-                action-color: Theme.accent-color;
-                border-color: Theme.border-color;
-                background: Theme.surface-color;
-            }
-
-            DataTableRow {
-                name: "Sareh Mohammadi";
-                initials: "SM";
-                phone: "0913 987 6543";
-                plan: "Premium Quarterly";
-                expiry: "2025-06-20";
-                status: "Active";
-                status-color: Theme.success-color;
-                border-color: Theme.border-color;
-                background: Theme.surface-secondary-color;
-            }
-
-            DataTableRow {
-                name: "Mehdi Karimi";
-                initials: "MK";
-                phone: "0914 456 7890";
-                plan: "Basic Monthly";
-                expiry: "2025-01-10";
-                status: "Expiring Soon";
-                status-color: Theme.warning-color;
-                border-color: Theme.border-color;
-                background: Theme.surface-color;
-            }
-        }
+    MemberDataTable {
+        rows: [
+            [
+                { text:1 },
+                { text:"user 1" },
+                { text:"lastName" },
+                { text:"Active" },
+                { text:"22/09/2026" }
+            ],
+        ];
     }
 
     Pagination {

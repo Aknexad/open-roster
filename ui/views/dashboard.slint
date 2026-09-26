@@ -11,24 +11,35 @@ export component DashboardView inherits VerticalBox {
 
     // status board
     StatusBoard {
-        height: 20%;
+        height: 50%;
     }
 
     // member table title
     Rectangle {
         width: 100%;
-        height: 7%;
+        height: 12%;
         background: Theme.surface-color;
         border-radius: 15px;
         Text {
             width: 95%;
             height: 100%;
-            text: "Members Table";
+            text: "Newest members";
             horizontal-alignment: start;
             vertical-alignment: center;
         }
     }
 
     //member tables
-    MemberDataTable { }
+  
+        MemberDataTable {
+        rows: [
+            [
+                { text:1 },
+                { text:"user" },
+                { text:"lastName" },
+                { text:"Active" },
+                { text:"26/09/2026" },
+            ]
+        ];
+    }
 }
